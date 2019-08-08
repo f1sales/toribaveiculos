@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/f1sales/f1sales_helpers.git
+  revision: 3c3f8eb9679b4e6296f8929fb8a20813936b8205
+  branch: master
+  specs:
+    f1sales_helpers (0.1.0)
+
+GIT
+  remote: git://github.com/marciok/f1sales_custom-email.git
+  revision: 6cad18ba9095284c15da97d7afd50aa47cc711a8
+  branch: master
+  specs:
+    f1sales_custom-email (0.1.0)
+
 PATH
   remote: .
   specs:
@@ -27,6 +41,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
+  f1sales_custom-email!
+  f1sales_helpers!
   rake (~> 10.0)
   rspec (~> 3.0)
   toribaveiculos!
