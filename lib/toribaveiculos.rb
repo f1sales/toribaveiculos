@@ -37,7 +37,7 @@ module Toribaveiculos
           phone: parsed_email['telefone'].tr('^0-9', ''),
           email: parsed_email['email']
         },
-        product: '',
+        product: (parsed_email['interesse'] || ''),
         message: (parsed_email['menssage'] || parsed_email['mensagem']).gsub('-', ' ').gsub("\n", ' ').strip,
         description: parsed_email['assunto'],
       }

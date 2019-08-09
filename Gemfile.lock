@@ -15,7 +15,7 @@ GIT
 PATH
   remote: .
   specs:
-    toribaveiculos (0.1.0)
+    toribaveiculos (0.1.1)
 
 GEM
   remote: https://rubygems.org/
