@@ -1,27 +1,58 @@
 GIT
-  remote: git://github.com/f1sales/f1sales_helpers.git
+  remote: https://github.com/f1sales/f1sales_helpers.git
   revision: 3c3f8eb9679b4e6296f8929fb8a20813936b8205
   branch: master
   specs:
     f1sales_helpers (0.1.0)
 
 GIT
-  remote: git://github.com/marciok/f1sales_custom-email.git
+  remote: https://github.com/marciok/f1sales_custom-email.git
   revision: 6cad18ba9095284c15da97d7afd50aa47cc711a8
   branch: master
   specs:
     f1sales_custom-email (0.1.0)
 
+GIT
+  remote: https://github.com/marciok/f1sales_custom-hooks.git
+  revision: 6e00712d0fdaf083ea4dab8b621c247dd7dd1142
+  branch: master
+  specs:
+    f1sales_custom-hooks (0.1.2)
+
 PATH
   remote: .
   specs:
-    toribaveiculos (0.1.1)
+    toribaveiculos (0.1.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    byebug (11.1.3)
+    crack (0.4.5)
+      rexml
     diff-lcs (1.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    hashdiff (1.0.1)
+    http (4.4.1)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
+    public_suffix (4.0.6)
     rake (10.5.0)
+    rexml (3.2.5)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -35,17 +66,28 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.1)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 2.0)
+  byebug
   f1sales_custom-email!
+  f1sales_custom-hooks!
   f1sales_helpers!
+  http
   rake (~> 10.0)
   rspec (~> 3.0)
   toribaveiculos!
+  webmock
 
 BUNDLED WITH
-   2.0.1
+   2.1.4
