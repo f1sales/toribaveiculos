@@ -103,5 +103,13 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
         expect(switch_source).to be_nil
       end
     end
+
+    context 'when message is empty' do
+      before { lead.message = '' }
+
+      it 'returns source name' do
+        expect(switch_source).to eq(source.name)
+      end
+    end
   end
 end

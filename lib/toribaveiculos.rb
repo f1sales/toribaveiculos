@@ -13,7 +13,7 @@ module Toribaveiculos
     def self.switch_source(lead)
       source = lead.source
       source_name = source.name
-      return source_name unless source_name.include?('Facebook') && lead.message.split(':').last.include?('pompeia')
+      return source_name unless source_name.include?('Facebook') && lead.message.split(':').last&.include?('pompeia')
 
       customer = lead.customer
       HTTP.post(
