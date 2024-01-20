@@ -13,7 +13,7 @@ module Toribaveiculos
     class << self
       def switch_source(lead)
         @lead = lead
-        return source_name unless source_name.include?('Facebook') && lead.message.split(':').last&.include?('pompeia')
+        return source_name unless source_name['Facebook'] && lead.message.split(':').last&.include?('pompeia')
 
         HTTP.post('https://toribapompeia.f1sales.org/public/api/v1/leads', json: lead_payload)
 
