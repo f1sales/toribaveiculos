@@ -10,33 +10,64 @@ module Toribaveiculos
   class Error < StandardError; end
 
   class F1SalesCustom::Hooks::Lead
-    def self.switch_source(lead)
-      source = lead.source
-      source_name = source.name
-      return source_name unless source_name.include?('Facebook') && lead.message.split(':').last&.include?('pompeia')
+    class << self
+      def switch_source(lead)
+        @lead = lead
+        return source_name unless source_name.include?('Facebook') && lead.message.split(':').last&.include?('pompeia')
 
-      customer = lead.customer
-      HTTP.post(
-        'https://toribapompeia.f1sales.org/public/api/v1/leads',
-        json: {
+        HTTP.post('https://toribapompeia.f1sales.org/public/api/v1/leads', json: lead_payload)
+
+        nil
+      end
+
+      private
+
+      def lead_payload
+        {
           lead: {
-            message: lead.message,
-            customer: {
-              name: customer.name,
-              email: customer.email,
-              phone: customer.phone
-            },
-            product: {
-              name: lead.product.name
-            },
-            source: {
-              name: lead.source.name
-            }
+            message: message,
+            customer: customer,
+            product: product,
+            source: source
           }
         }
-      )
+      end
 
-      nil
+      def source_name
+        @lead.source.name
+      end
+
+      def source
+        {
+          name: source_name
+        }
+      end
+
+      def lead_customer
+        @lead.customer
+      end
+
+      def customer
+        {
+          name: lead_customer.name,
+          email: lead_customer.email,
+          phone: lead_customer.phone
+        }
+      end
+
+      def lead_product
+        @lead.product
+      end
+
+      def product
+        {
+          name: lead_product.name
+        }
+      end
+
+      def message
+        @lead.message
+      end
     end
   end
 
