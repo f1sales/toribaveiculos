@@ -1,9 +1,8 @@
 require 'ostruct'
-require "f1sales_custom/parser"
-require "f1sales_custom/source"
+require 'f1sales_custom/parser'
+require 'f1sales_custom/source'
 
 RSpec.describe F1SalesCustom::Email::Parser do
-
   context 'when is about an used vechicle' do
     let(:email) do
       email = OpenStruct.new
@@ -19,11 +18,9 @@ RSpec.describe F1SalesCustom::Email::Parser do
     it 'contains website novos as source name' do
       expect(parsed_email[:source][:name]).to eq(F1SalesCustom::Email::Source.all[1][:name])
     end
-
   end
 
   context 'when is about new vechicle' do
-
     let(:email) do
       email = OpenStruct.new
       email.to = [email: 'website@lojateste.f1sales.org']
@@ -62,6 +59,5 @@ RSpec.describe F1SalesCustom::Email::Parser do
     it 'contains message' do
       expect(parsed_email[:message]).to eq('O Gol favorito do Palmeiras foi do Felipe Melo de cabeça hoje !!!! Contra o Corinthians')
     end
-
   end
 end

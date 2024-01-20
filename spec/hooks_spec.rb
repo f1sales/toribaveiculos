@@ -3,7 +3,6 @@ require 'ostruct'
 require 'byebug'
 
 RSpec.describe F1SalesCustom::Hooks::Lead do
-
   let(:lead) do
     lead = OpenStruct.new
     lead.source = source
@@ -36,7 +35,7 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
 
     source
   end
-  
+
   let(:switch_source) { described_class.switch_source(lead) }
   let(:call_url) { 'https://toribapompeia.f1sales.org/public/api/v1/leads' }
   let(:lead_payload) do
@@ -65,9 +64,9 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
 
     it 'do not call torimbapompeia api' do
       switch_source
-      expect(WebMock).to_not have_requested(:post, call_url).with(body: lead_payload) 
+      expect(WebMock).to_not have_requested(:post, call_url).with(body: lead_payload)
     end
-  
+
     it 'returns source name' do
       expect(switch_source).to eq(source.name)
     end
@@ -75,13 +74,13 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
 
   context 'when came from facebook' do
     context 'when is to pirituba' do
-      before do 
+      before do
         lead.message = 'prefere_ser_atendido_pela_pompeia_ou_pirituba?: pirituba'
       end
 
       it 'do not call torimbapompeia api' do
         switch_source
-        expect(WebMock).to_not have_requested(:post, call_url).with(body: lead_payload) 
+        expect(WebMock).to_not have_requested(:post, call_url).with(body: lead_payload)
       end
 
       it 'returns source name' do
@@ -90,7 +89,6 @@ RSpec.describe F1SalesCustom::Hooks::Lead do
     end
 
     context 'when is to pompeia' do
-
       before do
         stub_request(:post, call_url)
           .with(body: lead_payload.to_json).to_return(status: 200, body: '', headers: {})
